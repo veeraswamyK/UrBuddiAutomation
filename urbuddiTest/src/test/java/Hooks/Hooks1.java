@@ -13,28 +13,21 @@ import utils.screenshotGenerator;
 import java.time.Duration;
 
 public class Hooks1 {
+
+
     @Before
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
-        options.addArguments("--headless=new"); // New headless for modern Chrome
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--window-size=1920,1080");
-        String userDataDir = "/tmp/chrome-user-data-" + System.currentTimeMillis();
-        options.addArguments("--user-data-dir=" + userDataDir);
+        
 
-        WebDriver driver = new ChromeDriver(options);
-
+        WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driverManager.setDriver(driver);
+
+
     }
-
-
-
     @AfterStep
     public void afterEachStep(Scenario scenario) {
         if (scenario.isFailed()) {
