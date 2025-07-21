@@ -28,6 +28,8 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@v1
 
     - name: Build dependencies
       run: mvn clean install -DskipTests
