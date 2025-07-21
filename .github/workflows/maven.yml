@@ -35,7 +35,7 @@ jobs:
 
     - name: Generate feature files from Excel
       run: mvn exec:java -Dexec.mainClass="utils.excelToFeatureFile"
-      working-directory: urbuddiTest
+      working-directory: urbuddiTest/testdata
 
     - name: Run Cucumber Tests with TestNG
       run: mvn test -DsuiteXmlFile=testng.xml
