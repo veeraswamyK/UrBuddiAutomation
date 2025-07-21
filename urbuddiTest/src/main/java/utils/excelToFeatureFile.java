@@ -8,7 +8,7 @@ import java.io.*;
 public class excelToFeatureFile {
 
     public static void main(String[] args) {
-        String excelFilePath = "C:\\Users\\veera\\Desktop\\testdata.xlsx";
+        String excelFilePath = "urbuddiTest/testdata/testdata.xlsx";
         String featureFilePath = "src/test/resources/features/login.feature";
         String sheetName = "Sheet1";
 
