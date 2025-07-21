@@ -13,28 +13,28 @@ import utils.screenshotGenerator;
 import java.time.Duration;
 
 public class Hooks1 {
-
-
     @Before
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
-        options.addArguments("--headless=new"); // Use headless mode (new for Chrome 109+)
+        options.addArguments("--headless=new"); // New headless for modern Chrome
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
-        options.addArguments("--user-data-dir=/tmp/chrome-user-data"); // Add unique user data dir
-        options.addArguments("--remote-allow-origins=*"); // Optional: prevents CORS issues
-        options.addArguments("--window-size=1920,1080"); // Optional: for consistent screenshots
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--window-size=1920,1080");
+        String userDataDir = "/tmp/chrome-user-data-" + System.currentTimeMillis();
+        options.addArguments("--user-data-dir=" + userDataDir);
 
         WebDriver driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driverManager.setDriver(driver);
-
-
     }
+
+
+
     @AfterStep
     public void afterEachStep(Scenario scenario) {
         if (scenario.isFailed()) {
