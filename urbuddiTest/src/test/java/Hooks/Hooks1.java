@@ -20,12 +20,6 @@ public class Hooks1 {
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
-        String os = System.getProperty("os.name").toLowerCase();
-        if (!os.contains("win")) {
-            // Only use --user-data-dir on Linux CI if really needed (else remove it)
-            String userDataDir = "/tmp/chrome-user-data-" + UUID.randomUUID();
-            options.addArguments("--user-data-dir=" + userDataDir);
-        }
 
 
         WebDriver driver = new ChromeDriver();
