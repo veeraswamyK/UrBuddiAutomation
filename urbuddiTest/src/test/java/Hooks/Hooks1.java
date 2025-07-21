@@ -20,6 +20,15 @@ public class Hooks1 {
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
+        String os = System.getProperty("os.name").toLowerCase();
+
+        if (os.contains("linux")) {
+            options.addArguments("--headless=new");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--window-size=1920,1080");
+        }
 
 
         WebDriver driver = new ChromeDriver();
