@@ -19,25 +19,22 @@ import java.util.Date;
 
 public class screenshotGenerator {
 
-    
+
     public static void takeScreenshot(WebDriver driver) {
         try {
-            // Generate timestamped file name
+
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
             String fileName = "screenshot_" + timestamp + ".png";
-
-            // Save to disk
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             Path destination = Paths.get("screenshots", fileName);
             Files.createDirectories(destination.getParent());
             Files.copy(screenshot.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
             System.out.println("📸 Screenshot saved: " + destination.toAbsolutePath());
-
-            // Attach to Allure
             byte[] fileContent = Files.readAllBytes(destination);
             Allure.addAttachment("Failure Screenshot", new ByteArrayInputStream(fileContent));
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.err.println("Failed to capture screenshot: " + e.getMessage());
         }
     }

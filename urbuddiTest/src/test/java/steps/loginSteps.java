@@ -45,7 +45,7 @@ public class loginSteps {
         @Then("user login successfully")
         public void userLoginSuccessfully()
         {
-            screenshotGenerator.takeScreenshot(driver);
+
             try {
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 String a = "//p[contains(text(),'Dashboard')]";
@@ -58,11 +58,11 @@ public class loginSteps {
                     System.out.println("Dashboard is not displayed!");
                 }
             } catch (TimeoutException e) {
-                screenshotGenerator.takeScreenshot(driver);
+
                System.out.println("Dashboard not found  Login  failed.");
-                screenshotGenerator.takeScreenshot(driver);
+
                Assert.fail("unable to login with invalid credentials");
-               screenshotGenerator.takeScreenshot(driver);
+
             } catch (NoSuchElementException e) {
                 System.out.println("Dashboard element not found");
             }

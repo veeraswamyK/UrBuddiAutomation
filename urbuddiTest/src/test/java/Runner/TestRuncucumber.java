@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 @Test
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/createNewEmployee.feature",
         glue = {"steps", "Hooks"},
         plugin = {"pretty","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
 
