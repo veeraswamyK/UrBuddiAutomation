@@ -22,16 +22,15 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '21'
-        distribution: 'temurin'
-        cache: maven
+  
 
     - name: Grant permissions to run the batch file (optional on GitHub-hosted runners)
       run: |
         icacls runtests.bat /grant Everyone:F
+    - name: Check if batch file exists
+      run: |
+           if not exist "runtests.bat" (echo "Batch file not found!"exit 1)
+
 
     - name: Run Batch File
       run: |
