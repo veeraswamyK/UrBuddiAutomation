@@ -18,13 +18,10 @@ on:
 
 jobs:
   run-tests:
-    runs-on: windows-latest
-
+    runs-on: self-hosted
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
-
-  
 
     - name: Grant permissions to run the batch file (optional on GitHub-hosted runners)
       run: |
