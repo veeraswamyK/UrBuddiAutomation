@@ -13,6 +13,7 @@ import utils.screenshotGenerator;
 import java.time.Duration;
 import java.util.UUID;
 
+
 public class Hooks1 {
 
 
@@ -40,8 +41,8 @@ public class Hooks1 {
     }
     @AfterStep
     public void afterEachStep(Scenario scenario) {
-        if (scenario.isFailed()) {
-            WebDriver driver = driverManager.getDriver();
+        WebDriver driver=driverManager.getDriver();
+        if (scenario.isFailed()&& driver!=null) {
             screenshotGenerator.takeScreenshot(driver);
         }
     }
