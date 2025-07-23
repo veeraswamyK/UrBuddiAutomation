@@ -5,33 +5,42 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import utils.WaitHelper;
 
 import java.time.Duration;
 
 public class dashboardPage {
+    private static final Logger logger = LoggerFactory.getLogger(dashboardPage.class);
     WebDriver driver;
+ private  WaitHelper waitHelper;
     public dashboardPage(WebDriver driver) {
         this.driver = driver;
-    }
-    public void onDashboard()
-    {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement dashboradDiv= driver.findElement(By.xpath("//p[contains(text(),'Dashboard')]/parent::div"));
-        wait.until(ExpectedConditions.visibilityOf(dashboradDiv));
-        System.out.println("selected page is dashbord");
-    }
-    public void goToEmployeePage(String a)
-    {
-        var element= driver.findElement(By.xpath("//p[normalize-space(text()) = '"+a+"']"));
-        element.click();
-        System.out.println("employee clicked");
+        this.waitHelper=new WaitHelper(driver);
 
     }
-    public void goToLeaveManagement(String a)
-    {
-        var element= driver.findElement(By.xpath("//p[normalize-space(text()) = '"+a+"']"));
-        element.click();
-        System.out.println("employee clicked");
+
+    public void onDashboard() {
+
+        By dashBoard = By.xpath("//p[contains(text(),'Dashboard')]/parent::div");
+        WebElement dashBoardElement = waitHelper.waitForVisibility(dashBoard, 10);
+        dashBoardElement.click();
+        logger.info("on the dash board");
+    }
+
+    public void goToEmployeePage(String a) {
+
+        By employeeClick = By.xpath("//p[normalize-space(text()) = '" + a + "']");
+        WebElement employeeClickElement=waitHelper.waitForClickability(employeeClick, 10);
+        employeeClickElement.click();
+        logger.info("on the employee creation");
+
+
+    }
+
+    public void goToLeaveManagement(String a) {
+
 
     }
 

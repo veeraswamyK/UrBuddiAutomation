@@ -5,10 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
 public class loginPage {
+    private static final Logger logger = LoggerFactory.getLogger(loginPage.class);
 
     WebDriver driver;
 
@@ -23,6 +26,7 @@ public class loginPage {
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(a)));
         return driver.findElement(By.xpath(a));
+
     }
 
     public WebElement PasswordField() {
@@ -38,4 +42,5 @@ public class loginPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(a)));
         return driver.findElement(By.xpath(a));
     }
+
 }

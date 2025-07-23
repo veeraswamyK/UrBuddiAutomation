@@ -6,6 +6,9 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import steps.employeeCreation;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -18,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class screenshotGenerator {
+    private static final Logger logger = LoggerFactory.getLogger(screenshotGenerator.class);
 
 
     public static void takeScreenshot(WebDriver driver) {
@@ -29,13 +33,12 @@ public class screenshotGenerator {
             Path destination = Paths.get("screenshots", fileName);
             Files.createDirectories(destination.getParent());
             Files.copy(screenshot.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("📸 Screenshot saved: " + destination.toAbsolutePath());
+            System.out.println("Screenshot saved: " + destination.toAbsolutePath());
             byte[] fileContent = Files.readAllBytes(destination);
             Allure.addAttachment("Failure Screenshot", new ByteArrayInputStream(fileContent));
 
-        }
-        catch (IOException e) {
-            System.err.println("Failed to capture screenshot: " + e.getMessage());
+        } catch (IOException e) {
+            logger.info("screenshot failed");
         }
     }
-    }
+}

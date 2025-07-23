@@ -38,7 +38,7 @@ public class excelToFeatureFile {
             writer.write("  Scenario Outline: Login with multiple credentials\n");
             writer.write("    Given Urbuddi is launched \"https://dev.urbuddi.com/login\"\n");
             writer.write("    When I login with \"<username>\" and \"<password>\"\n");
-            writer.write("    Then user login successfully\n\n");
+            writer.write("    Then User login successfully\n\n");
             writer.write("    Examples:\n");
             writer.write("      | username | password |\n");
 

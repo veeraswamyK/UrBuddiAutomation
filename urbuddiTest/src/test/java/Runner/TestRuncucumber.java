@@ -5,13 +5,10 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-@Test
 @CucumberOptions(
-        features = "src/test/resources/features/createNewEmployee.feature",
+        features = "src/test/resources/features",
         glue = {"steps", "Hooks"},
-        plugin = {"pretty","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-
-
+        plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
         monochrome = true
 )
 public class TestRuncucumber extends AbstractTestNGCucumberTests {

@@ -2,11 +2,16 @@ package utils;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import steps.employeeCreation;
 
 import java.io.*;
 import java.util.*;
 
 public class readerExcel {
+    private static final Logger logger = LoggerFactory.getLogger(readerExcel.class);
+
 
     public static List<Map<String, String>> readExcelData(String filePath) throws IOException {
         List<Map<String, String>> data = new ArrayList<>();

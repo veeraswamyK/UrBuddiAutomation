@@ -11,21 +11,21 @@
     <build>
         <plugins>
 
-                    <!-- Surefire Plugin for TestNG -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.2.5</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>testng.xml</suiteXmlFile>
-                            </suiteXmlFiles>
+            <!-- Surefire Plugin for TestNG -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
 
-                                <systemPropertyVariables>
-                                    <allure.results.directory>target/allure-results</allure.results.directory>
-                                </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
+                    <systemPropertyVariables>
+                        <allure.results.directory>target/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>io.qameta.allure</groupId>
@@ -34,22 +34,22 @@
             </plugin>
 
 
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>3.1.0</version>
-                    <executions>
-                        <execution>
-                            <id>generate-feature</id>
-                            <phase>generate-test-sources</phase>
-                            <goals>
-                                <goal>java</goal>
-                            </goals>
-                            <configuration>
-                                <mainClass>utils.excelToFeatureFile</mainClass>
-                            </configuration>
-                        </execution>
-                    </executions>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-feature</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>utils.excelToFeatureFile</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
 
 
             </plugin>
@@ -59,75 +59,87 @@
 
 
     <dependencies>
-            <dependency>
-                <groupId>io.cucumber</groupId>
-                <artifactId>cucumber-java</artifactId>
-                <version>7.24.0</version>
-                <scope>test</scope>
-            </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.24.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.17</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.18</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.20.0</version> <!-- Use the latest compatible version -->
+        </dependency>
 
 
         <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>2.20.0</version> <!-- Use the latest compatible version -->
-            </dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.34.0</version>
+        </dependency>
+        <!-- Cucumber TestNG -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.24.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.11.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.2.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-maven -->
+
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber-jvm -->
+
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-java-commons -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.29.1</version>
+        </dependency>            <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.29.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>2.29.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.2</version>
+        </dependency>
 
 
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-java</artifactId>
-                <version>4.34.0</version>
-            </dependency>
-            <!-- Cucumber TestNG -->
-            <dependency>
-                <groupId>io.cucumber</groupId>
-                <artifactId>cucumber-testng</artifactId>
-                <version>7.24.0</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-            <dependency>
-                <groupId>org.testng</groupId>
-                <artifactId>testng</artifactId>
-                <version>7.11.0</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi</artifactId>
-                <version>5.2.2</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-maven -->
-
-            <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber-jvm -->
-
-            <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-java-commons -->
-            <dependency>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-java-commons</artifactId>
-                <version>2.29.1</version>
-            </dependency>            <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
-            <dependency>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-testng</artifactId>
-                <version>2.29.1</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
-            <dependency>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-cucumber7-jvm</artifactId>
-                <version>2.29.1</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml</artifactId>
-                <version>5.2.2</version>
-            </dependency>
-
-
-        </dependencies>
+    </dependencies>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
