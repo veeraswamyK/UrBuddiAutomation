@@ -36,6 +36,11 @@ jobs:
       - name: Build and run tests with Maven
         run: mvn clean install
         working-directory: trails
+      - name: Submit dependencies to GitHub dependency graph
+        uses: advanced-security/maven-dependency-submission-action@v4
+        with:
+          directory: trails
+
 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
