@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: trails  # Make sure this is where your pom.xml is
+        working-directory: trails  # Your Maven module path
 
     steps:
       - name: Checkout repository
@@ -24,5 +24,12 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Run Maven Tests
+      - name: Build and Run Tests
         run: mvn clean install
+
+      - name: Upload Cucumber Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-reports
+          path: target/cucumber-reports
