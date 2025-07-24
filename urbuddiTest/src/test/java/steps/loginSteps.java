@@ -20,9 +20,9 @@ import java.util.NoSuchElementException;
 
 public class loginSteps {
     private static final Logger logger = LoggerFactory.getLogger(loginSteps.class);
-
     WebDriver driver = Hooks1.getDriver();
     loginPage loginPage;
+
     dashboardPage Dashboard;
 
     @Given("Urbuddi is launched {string}")

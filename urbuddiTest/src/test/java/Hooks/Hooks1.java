@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import utils.screenshotGenerator;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Hooks1 {
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
@@ -37,6 +39,16 @@ public class Hooks1 {
         options.addArguments("--disable-extensions");
         options.addArguments("--remote-allow-origins=*");
         String os = System.getProperty("os.name").toLowerCase();
+
+        Map<String, Object> prefs = new HashMap<>();
+
+
+        prefs.put("profile.default_content_setting_values.notifications", 2);
+
+        options.setExperimentalOption("prefs", prefs);
+
+
+
         if (os.contains("linux")) {
             options.addArguments("--headless=new");
             options.addArguments("--disable-gpu");
@@ -44,7 +56,7 @@ public class Hooks1 {
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1920,1080");
         }
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Hooks1.setDriver(driver);
