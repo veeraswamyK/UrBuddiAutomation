@@ -7,8 +7,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"steps", "hooks"},
-        plugin = {"pretty", "html:target/cucumber-reports.html",},
-        tags = "@login"
+        plugin = {"pretty", "html:target/cucumber-reports.html",}
+
 )
 public class runners extends AbstractTestNGCucumberTests {
 }
