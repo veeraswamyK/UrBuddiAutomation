@@ -70,12 +70,14 @@ public class employeeCreation {
     public void addingAllDetails(String a) {
         employeePage.reqiredDetails(a);
         logger.info("entering details ");
+        logger.info("for git excercise");
     }
 
     @Then("User able to save Employee successfully")
     public void createdEmployeeSuccessfully() {
         employeePage.clickOnAddAfterFilling();
         logger.info("clicking on add button");
+        logger.info("for git excercise");
     }
 }
 
