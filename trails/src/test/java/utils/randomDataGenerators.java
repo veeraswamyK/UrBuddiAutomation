@@ -30,7 +30,7 @@ public class randomDataGenerators {
         }
 
         String domain = "@optimworks.com"; // You can change this to any domain
-        return localPart.toString() + domain;
+        return localPart + domain;
     }
 
 }
