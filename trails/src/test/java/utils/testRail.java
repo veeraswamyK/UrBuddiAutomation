@@ -18,7 +18,7 @@ public class testRail {
     private static final String USERNAME = "veeraswamy.kalluri@optimworks.com";
     private static final String API_KEY = "fDUZKLeHzo7fpZ96TqLL-2UiRQDvVMtbbk4ao2ugg";
 
-    public static int runId = 8;
+    public static int runId = 1;
 
     public static void updateTestCaseStatus(int runId, int caseId, int statusId, String comment) throws IOException {
         String url = BASE_URL + "index.php?/api/v2/add_result_for_case/" + runId + "/" + caseId;

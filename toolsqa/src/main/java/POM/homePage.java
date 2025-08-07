@@ -4,32 +4,39 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 
 public class homePage {
     WebDriver driver;
-
-    @FindBy(xpath="//span[text()='Tutorials']")
-    WebElement tutorial;
-    @FindBy(xpath="//span[text()='Tutorials']")
-    WebElement tool;
+    WebDriverWait wait;
 
     public homePage(WebDriver driver)
     {
         this.driver=driver;
-        PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     public void tutorialEnroll()
     {
-        tutorial.click();
+        WebElement tutorialElement = driver.findElement(By.xpath("//span[text()='Tutorials']"));
+        wait.until(ExpectedConditions.elementToBeClickable(tutorialElement));
+        tutorialElement.click();
     }
     public void selectTechnology(String techName) {
+
         WebElement techElement = driver.findElement(By.xpath("//span[text()='" + techName + "']"));
+        wait.until(ExpectedConditions.elementToBeClickable(techElement));
         techElement.click();
     }
 
-    public void selectTool()
+    public void selectTool(String toolName)
     {
-        tool.click();
+
+        WebElement toolElement = driver.findElement(By.xpath("//ul[@class='active']//a[text()='" + toolName + "']"));
+        wait.until(ExpectedConditions.elementToBeClickable(toolElement));
+        toolElement.click();
     }
 }
