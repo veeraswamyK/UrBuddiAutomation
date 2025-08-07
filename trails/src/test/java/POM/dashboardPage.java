@@ -51,5 +51,8 @@ public class dashboardPage {
         clickYesToLogoutFromUrbuddi.click();
         logger.info("clicked on logout yes");
     }
+    public void numberOfEmployees(){
+
+    }
 
 }

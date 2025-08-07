@@ -2,20 +2,19 @@ package steps;
 
 import POM.dashboardPage;
 import POM.employeePage;
-import excelReader.dataFromExcel;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import hooks.hooks1;
 import POM.loginPage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.Assert;
 
 public class stepDefenitions {
     WebDriver driver = hooks1.getDriver();
     loginPage loginpage = new loginPage(driver);
     dashboardPage dashboard = new dashboardPage(driver);
     employeePage employeeCreation = new employeePage(driver);
+
     private static final Logger logger = LoggerFactory.getLogger(stepDefenitions.class);
 
     @Given("urbuddi loginpage is launched")
@@ -43,10 +42,10 @@ public class stepDefenitions {
 
     @Then("User should enter the status of the test case")
     public void userShouldEnterTheStatusOfTheTestCase() {
-        dataFromExcel.updateStatus("Book.xlsx", "Sheet1", "TC001", "Pass", "remarks");
+       logger.info("data is updating to excel");
     }
 
-    @And("click on logout on dashboard and yes on prompt")
+    @And("Click on logout on dashboard and yes on prompt")
     public void clickOnLogoutOnDashboard() {
         dashboard.logout();
     }

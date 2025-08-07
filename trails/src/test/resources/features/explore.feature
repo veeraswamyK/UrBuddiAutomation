@@ -1,7 +1,7 @@
 Feature: urbuddiExploration
 
   @login
-  Scenario: Login to Flipkart with valid credentials
+  Scenario: Login to urbuddi with valid credentials
     Given urbuddi loginpage is launched
     When User enters valid data from "veeraswamy.kalluri@optimworks.com"and"1234567"
     Then User should enter the status of the test case
@@ -10,8 +10,7 @@ Feature: urbuddiExploration
   Scenario: To logout employee successfully
     Given urbuddi loginpage is launched
     When User enters valid data from "veeraswamy.kalluri@optimworks.com"and"1234567"
-    And click on logout on dashboard
-    And user clicks yes on the prompt appeared
+    And Click on logout on dashboard and yes on prompt
     Then urbuddi loginpage is displayed again for login
 
   @signup

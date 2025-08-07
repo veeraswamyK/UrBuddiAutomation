@@ -54,12 +54,12 @@ public class employeePage {
                 case "id":
                     WebElement id = driver.findElement(By.xpath("//input[@name='" + field + "']"));
                     logger.info("enter: {}", field);
-                    id.sendKeys("" + Randomnumber() + "");
+                    id.sendKeys(Randomnumber());
                     break;
                 case "email":
                     WebElement email = driver.findElement(By.xpath("//input[@name='" + field + "']"));
                     logger.info("enter: {}", field);
-                    email.sendKeys("" + generateRandomEmail() + "");
+                    email.sendKeys(generateRandomEmail());
                     break;
                 case "role":
                     WebElement role = driver.findElement(By.xpath("//select[@id='" + field + "']"));
