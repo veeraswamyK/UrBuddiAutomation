@@ -54,6 +54,7 @@ public class loginSteps {
                 logger.info("logged in completed");
             } else {
                 logger.info("logging in failed");
+                
             }
         } catch (TimeoutException e) {
             Assert.fail("unable to login with invalid credentials");
